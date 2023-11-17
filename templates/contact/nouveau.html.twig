@@ -1,0 +1,11 @@
+{% block body %}
+
+{{ form_start(contact) }}
+    {{ form_row(contact.nom) }} 
+    {{ form_row(contact.prenom) }}
+    {{ form_row(contact.email) }} 
+    {{ form_row(contact.telephone) }}
+    <button type="submit" class="btn btn-primary"> {{ button_label | default('Ajouter') }} </button>
+{{ form_end(contact) }}
+
+{% endblock %}

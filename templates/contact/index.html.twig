@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Listes des contacts {% endblock %}
+
+{% block body %}
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section"> Liste des contacts </h2>
+					<a href="{{ path('nouveau_contact') }}" class="btn btn-success"> Ajouter un contact </a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table">
+							<thead class="thead-dark">
+								<tr>
+									<th>ID no.</th>
+						      		<th>Nom</th>
+						      		<th>Prénom</th>
+						      		<th>Email</th>
+									<th>No. Tel</th>
+									<th></th>
+									<th></th>
+									<th></th>							
+						    	</tr>
+						  	</thead>
+						  	<tbody>
+								{% for contact in contacts %}
+						    	<tr class="alert" role="alert">
+						      		<th scope="row">{{ contact.id }}</th>
+						      		<td>{{ contact.nom }}</td>
+						      		<td>{{ contact.prenom }}</td>
+						      		<td>{{ contact.email }}</td>
+									<td>{{ contact.telephone }}</td>
+									<td>
+										<a href="{{ path('details_contact', { id:contact.id }) }}">
+											details
+										</a>
+									</td>
+									<td>
+										<a href="{{ path('modifier_contact', { id:contact.id }) }}">
+											editer
+										</a>
+									</td>
+						      		<td>
+										<a href="{{ path('supprimer_contact', { id:contact.id }) }}">
+											supprimer
+										</a>						      			
+				        			</td>
+						    	</tr>
+								{% endfor %}
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
